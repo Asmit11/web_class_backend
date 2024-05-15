@@ -89,8 +89,30 @@ const login = async (req, res) => {
     }
 }
 
+// login function
+const loginUser = async (req, res) => {
+
+    // check incoming data
+    console.log(req.body)
+    // destructing
+    const { email, password } = req.body;
+
+    // validation
+    if(!email || !password){
+        return res.json({
+            "success" : false,
+            "message" : "Please enter all fields"
+        }
+        )
+    }
+
+    // try catch
+    res.send("Login API is working")
+}
+
 // Exporting
 module.exports = {
-    createUser, login
+    createUser, login,
+    loginUser
 }
 

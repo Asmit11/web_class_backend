@@ -4,6 +4,9 @@ const userController = require('../controllers/userControllers') //manualling im
 // Creating user registration route
 router.post('/create', userController.createUser)
 
+// login routes
+router.post('/login', userController.loginUser)
+
 // controller (export) - routes (import) - use - (index.js)
 
 // exporting the router

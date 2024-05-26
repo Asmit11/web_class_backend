@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const connectDatabase = require('./database/database');
 const dotenv = require('dotenv')
 const cors = require('cors')
+const acceptFormData = require('express-fileupload')
 
 // creating an epxress app
 const app = express();
@@ -19,6 +20,9 @@ app.use(cors(corsOptions))
 
 // Express Json Config
 app.use(express.json())
+
+// Config form Data
+app.use(acceptFormData());
 
 // dotenv Configuration
 dotenv.config()
@@ -38,7 +42,8 @@ app.get('/test', (req, res) => {
 // http://localhost:5500/test
 
 //  configuring routes of user 
-app.use('/api/user', require('./routes/userRoutes'))
+app.use('/api/user', require('./routes/userRoutes'));
+app.use('/api/product', require('./routes/productRoutes'));
 
 // http://localhost:5500/api/user/create
 

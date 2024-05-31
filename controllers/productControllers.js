@@ -74,7 +74,33 @@ const createProduct = async (req, res) => {
 
 };
 
+// Fetch all products
+const getAllProducts = async (req, res) => {
+
+    // try catc
+    try {
+        const allProducts = await productModel.find({})
+        res.status(201).json({
+            "success": true,
+            "message": "Product Fetched Succesfully",
+            "products": allProducts
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            "success": false,
+            "message": "Internal server error",
+            "error": error
+        })
+    }
+
+    // fetch all products
+    // send respone
+
+}
+
 
 module.exports = {
-    createProduct
+    createProduct,
+    getAllProducts,
 };
